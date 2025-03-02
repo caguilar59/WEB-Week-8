@@ -1,0 +1,67 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+<div id="app">
+  <h1>Vue Mart</h1>
+  <h2>Shopping Cart</h2>
+  <button v-on:click="displayCost">
+      Get Total
+  </button>
+  <ul>
+    <li v-for="item in shoppingCart">
+      <!-- Display Cart Items -->
+       {{item.label}}: ${{item.cost}}
+    </li>
+    <li>
+      <!-- Display Total Cost -->
+      Total Cost: ${{totalCost}}
+    </li>
+  </ul>
+  
+  
+</div>
+<style>
+    /* No additional/change codes required */
+
+h2 {
+  display:inline;
+  margin-right: 10px;
+}
+ul {
+  list-style-type: none;
+}
+li:last-child {
+  margin-top: 15px;
+  font-weight: bold;
+}
+</style>
+<script>
+    //TASK 1: Display the shopping cart items -using a Vue directive
+//TASK 2: When the button Get Total is clicked, the total cost of all items will be displayed -using a method
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    shoppingCart: [
+      { label: 'Apples', cost: 6 },
+      { label: 'Bananas', cost: 2 },
+      { label: 'Coconuts', cost: 8 }
+    ],
+    cartItems: [], //empty array
+    totalCost: null //empty variable
+
+   },
+
+    //ADD A METHOD BELOW
+    //Within the method:
+    //1. create a loop to add the items into the array provided
+    //2. total up the cost of the items using an array method and the variable provided
+   methods: {
+      displayCost(){
+        alert("aaa");
+        console.log(event);
+        return this.totalCost = this.shoppingCart.reduce((sum, item) => sum + item.cost, 0); 
+    },
+},
+})
+
+</script>
